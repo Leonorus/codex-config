@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Workflow"
+  short_description: "Classify tasks and apply proportional Codex workflows."
+  default_prompt: "Use the Codex workflow to classify this task and apply the right amount of process."

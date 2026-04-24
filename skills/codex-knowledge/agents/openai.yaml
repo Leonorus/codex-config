@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Knowledge"
+  short_description: "Use Obsidian notes for Codex workflows."
+  default_prompt: "Use the Codex knowledge workflow to search or update the Obsidian knowledge library."

@@ -10,4 +10,13 @@
 !config.toml
 !rules/
 !rules/**
+!skills/
+!skills/codex-workflow/
+!skills/codex-workflow/SKILL.md
+!skills/codex-workflow/agents/
+!skills/codex-workflow/agents/openai.yaml
+!skills/codex-knowledge/
+!skills/codex-knowledge/SKILL.md
+!skills/codex-knowledge/agents/
+!skills/codex-knowledge/agents/openai.yaml
 !version.json
