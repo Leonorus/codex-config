@@ -3,6 +3,10 @@ model_reasoning_effort = "medium"
 
 model_instructions_file = "/Users/filipp.vysokov/.codex/engram-instructions.md"
 experimental_compact_prompt_file = "/Users/filipp.vysokov/.codex/engram-compact-prompt.md"
+
+[features]
+codex_hooks = true
+
 [shell_environment_policy]
 inherit = "all"
 

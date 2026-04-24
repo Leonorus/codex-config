@@ -7,6 +7,11 @@
 !README.md
 !engram-compact-prompt.md
 !engram-instructions.md
+!AGENTS.md
+!RTK.md
+!hooks.json
+!hooks/
+!hooks/*.sh
 !requirements-dev.txt
 
 # Codex configuration intended for sync.

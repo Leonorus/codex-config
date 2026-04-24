@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh /Users/filipp.vysokov/.codex/hooks/obsidian-index.sh",
+            "timeout": 10,
+            "statusMessage": "Loading Obsidian index"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh /Users/filipp.vysokov/.codex/hooks/classify-task-reminder.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh /Users/filipp.vysokov/.codex/hooks/auto-sync.sh",
+            "timeout": 30,
+            "statusMessage": "Syncing Codex config"
+          }
+        ]
+      }
+    ]
+  }
+}
