@@ -1,0 +1,87 @@
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[shell_environment_policy]
+inherit = "all"
+
+[projects."/Users/filipp.vysokov"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/ansible-proxmox"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/ansible-playbooks-vm"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/paygate-asia"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/terraform-proxmox"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/proxs3"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/capi"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/vault"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/playbooks"]
+trust_level = "trusted"
+
+[notice]
+hide_rate_limit_model_nudge = true
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+
+[mcp_servers.gitlab]
+command = "/bin/zsh"
+args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run --rm -i -e GITLAB_PERSONAL_ACCESS_TOKEN -e GITLAB_API_URL zereight050/gitlab-mcp"]
+
+[mcp_servers.gitlab.tools.get_file_contents]
+approval_mode = "approve"
+
+[mcp_servers.gitlab.tools.list_merge_requests]
+approval_mode = "approve"
+
+[mcp_servers.gitlab.tools.get_project]
+approval_mode = "approve"
+
+[mcp_servers.gitlab.tools.get_merge_request_diffs]
+approval_mode = "approve"
+
+[mcp_servers.github]
+command = "/bin/zsh"
+args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server stdio --log-file /tmp/github-mcp.log"]
+
+[mcp_servers.sequentialthinking]
+command = "docker"
+args = ["run", "--rm", "-i", "mcp/sequentialthinking"]
+
+[mcp_servers.filesystem]
+command = "docker"
+args = ["run", "-i", "--rm", "--mount", "type=bind,src=/Users/filipp.vysokov,dst=/Users/filipp.vysokov", "mcp/filesystem", "/Users/filipp.vysokov"]
+
+[mcp_servers.fetch]
+command = "docker"
+args = ["run", "-i", "--rm", "mcp/fetch"]
+
+[mcp_servers.fetch.tools.fetch]
+approval_mode = "approve"
+
+[mcp_servers.dockerhub]
+command = "docker"
+args = ["run", "-i", "--rm", "-e", "HUB_PAT_TOKEN", "mcp/dockerhub", "--transport=stdio", "--username=leonorus"]
+
+[mcp_servers.context7]
+command = "docker"
+args = ["run", "-i", "--rm", "-e", "MCP_TRANSPORT", "-e", "CONTEXT7_API_KEY", "mcp/context7"]
+
+[tui]
+status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 1

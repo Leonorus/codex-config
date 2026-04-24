@@ -1,0 +1,13 @@
+# Ignore everything by default. ~/.codex mixes config with auth, logs,
+# chat/session history, caches, SQLite state, and temporary runtime files.
+*
+
+# Repository metadata/docs.
+!.gitignore
+!README.md
+
+# Codex configuration intended for sync.
+!config.toml
+!rules/
+!rules/**
+!version.json
