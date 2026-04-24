@@ -60,8 +60,8 @@ approval_mode = "approve"
 approval_mode = "approve"
 
 [mcp_servers.obsidian]
-command = "docker"
-args = ["run", "--rm", "-i", "-e", "OBSIDIAN_HOST=host.docker.internal", "-e", "OBSIDIAN_API_KEY", "mcp/obsidian"]
+command = "/bin/zsh"
+args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run --rm -i -e OBSIDIAN_HOST=host.docker.internal -e OBSIDIAN_API_KEY mcp/obsidian"]
 
 [mcp_servers.github]
 command = "/bin/zsh"
@@ -94,7 +94,7 @@ args = ["run", "-i", "--rm", "-e", "MCP_TRANSPORT", "-e", "CONTEXT7_API_KEY", "m
 status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
 [tui.model_availability_nux]
-"gpt-5.5" = 1
+"gpt-5.5" = 2
 
 [mcp_servers.engram]
 command = "/opt/homebrew/bin/engram"
