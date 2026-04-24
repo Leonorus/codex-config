@@ -94,7 +94,7 @@ args = ["run", "-i", "--rm", "-e", "MCP_TRANSPORT", "-e", "CONTEXT7_API_KEY", "m
 status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
 [tui.model_availability_nux]
-"gpt-5.5" = 2
+"gpt-5.5" = 3
 
 [mcp_servers.engram]
 command = "/opt/homebrew/bin/engram"
