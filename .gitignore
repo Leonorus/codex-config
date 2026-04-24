@@ -5,6 +5,7 @@
 # Repository metadata/docs.
 !.gitignore
 !README.md
+!requirements-dev.txt
 
 # Codex configuration intended for sync.
 !config.toml

@@ -130,3 +130,5 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "ANSIBLE_STRATEGY=linear .venv/bin/ansib
 prefix_rule(pattern=["git", "init"], decision="allow")
 prefix_rule(pattern=["git", "remote", "add"], decision="allow")
 prefix_rule(pattern=["python3", "/Users/filipp.vysokov/.codex/skills/.system/skill-creator/scripts/init_skill.py"], decision="allow")
+prefix_rule(pattern=["python3", "-m", "venv"], decision="allow")
+prefix_rule(pattern=[".venv/bin/python", "-m", "pip", "install"], decision="allow")

@@ -16,3 +16,14 @@ This repo ports the reusable parts of `Leonorus/claude-workflow` to Codex:
 
 Claude-specific hooks, plugin settings, session history, telemetry, and custom agent files are
 not tracked here because Codex does not consume them directly.
+
+## Skill Validation
+
+The bundled skill validator requires `PyYAML`. Use a local venv:
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-dev.txt
+.venv/bin/python skills/.system/skill-creator/scripts/quick_validate.py skills/codex-workflow
+.venv/bin/python skills/.system/skill-creator/scripts/quick_validate.py skills/codex-knowledge
+```
