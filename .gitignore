@@ -5,6 +5,8 @@
 # Repository metadata/docs.
 !.gitignore
 !README.md
+!engram-compact-prompt.md
+!engram-instructions.md
 !requirements-dev.txt
 
 # Codex configuration intended for sync.

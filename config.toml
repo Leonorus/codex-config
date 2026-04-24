@@ -1,6 +1,8 @@
 model = "gpt-5.5"
 model_reasoning_effort = "medium"
 
+model_instructions_file = "/Users/filipp.vysokov/.codex/engram-instructions.md"
+experimental_compact_prompt_file = "/Users/filipp.vysokov/.codex/engram-compact-prompt.md"
 [shell_environment_policy]
 inherit = "all"
 
@@ -89,3 +91,7 @@ status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
 [tui.model_availability_nux]
 "gpt-5.5" = 1
+
+[mcp_servers.engram]
+command = "/opt/homebrew/bin/engram"
+args = ["mcp", "--tools=agent"]
