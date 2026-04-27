@@ -40,6 +40,9 @@ trust_level = "trusted"
 [projects."/Users/filipp.vysokov/Projects/paygate-fe"]
 trust_level = "trusted"
 
+[projects."/Users/filipp.vysokov/Projects/paygate-asia-fe"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 
