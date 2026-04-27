@@ -66,6 +66,9 @@ approval_mode = "approve"
 command = "/bin/zsh"
 args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run --rm -i -e OBSIDIAN_HOST=host.docker.internal -e OBSIDIAN_API_KEY mcp/obsidian"]
 
+[mcp_servers.obsidian.tools.obsidian_simple_search]
+approval_mode = "approve"
+
 [mcp_servers.github]
 command = "/bin/zsh"
 args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run -i --rm -e GITHUB_PERSONAL_ACCESS_TOKEN ghcr.io/github/github-mcp-server stdio --log-file /tmp/github-mcp.log"]
