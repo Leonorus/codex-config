@@ -59,6 +59,9 @@ approval_mode = "approve"
 [mcp_servers.gitlab.tools.get_merge_request_diffs]
 approval_mode = "approve"
 
+[mcp_servers.gitlab.tools.get_repository_tree]
+approval_mode = "approve"
+
 [mcp_servers.obsidian]
 command = "/bin/zsh"
 args = ["-lc", "source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run --rm -i -e OBSIDIAN_HOST=host.docker.internal -e OBSIDIAN_API_KEY mcp/obsidian"]
