@@ -3,6 +3,7 @@ model_reasoning_effort = "medium"
 
 model_instructions_file = "/Users/filipp.vysokov/.codex/engram-instructions.md"
 experimental_compact_prompt_file = "/Users/filipp.vysokov/.codex/engram-compact-prompt.md"
+service_tier = "fast"
 
 [features]
 codex_hooks = true
@@ -41,6 +42,12 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/filipp.vysokov/Projects/paygate-asia-fe"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/kam"]
+trust_level = "trusted"
+
+[projects."/Users/filipp.vysokov/Projects/cluster-api-provider-proxmox"]
 trust_level = "trusted"
 
 [notice]

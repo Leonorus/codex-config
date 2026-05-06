@@ -10,7 +10,7 @@ runtime or sensitive files such as `auth.json`, `history.jsonl`, `sessions/`,
 
 This repo ports the reusable parts of `Leonorus/claude-workflow` to Codex:
 
-- `skills/codex-workflow`: proportional task taxonomy and engineering workflow.
+- `skills/codex-workflow`: proportional task taxonomy, engineering workflow, and evidence-gated reasoning guards.
 - `skills/codex-knowledge`: Obsidian knowledge-library search, notes, and promotion rules.
 - `config.toml`: MCP servers, including Obsidian and Engram.
 - `engram-instructions.md`: persistent-memory protocol loaded by Codex.
@@ -25,7 +25,7 @@ not tracked here because Codex does not consume them directly.
 Claude hook equivalents ported to Codex:
 
 - `SessionStart`: injects a compact Obsidian vault index.
-- `UserPromptSubmit`: reminds Codex to classify substantial tasks through `codex-workflow`.
+- `UserPromptSubmit`: reminds Codex to load/use `codex-workflow`, state the bucket, apply matching weight, consult codex-workflow's Obsidian Knowledge Workflow (or `codex-knowledge` where active) for Ops/Infra, Debug, architecture choices, and reusable research, and prefer evidence-gated reasoning over token thrift for substantial buckets.
 - `Stop`: auto-syncs tracked `~/.codex` config and `~/Obsidian/Work/Knowledge`.
 
 Not ported 1:1:

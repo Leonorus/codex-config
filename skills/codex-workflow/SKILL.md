@@ -1,11 +1,19 @@
 ---
 name: codex-workflow
-description: Classify and run Filipp's proportional Codex engineering workflow. Use at the start of substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance tasks to choose trivia, light ops, heavy ops, app code, script, debug, research, or ambiguous flow; skip for casual chat and simple factual answers.
+description: Classify and run Filipp's proportional Codex engineering workflow. Use first for substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance tasks; state the bucket out loud, apply the matching weight, and skip only for casual chat, simple factual answers, or clear follow-ups to an already-classified task.
 ---
 
 # Codex Workflow
 
 This is the Codex port of the Claude `classify-task` workflow. It is the source of truth for task buckets in Codex. Apply only the amount of process the task deserves.
+
+## Start-of-task Rule
+
+For substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance work, load and use this skill before planning, proposing an approach, or editing files. State one visible sentence:
+
+`Bucket: <bucket> — <why>; applying <matching workflow weight>.`
+
+Skip this only for casual chat, simple factual answers, or clear follow-ups to an already-classified task.
 
 ## Classify First
 
@@ -20,9 +28,73 @@ For non-trivia work, state the bucket in one short sentence and run that flow:
 | Script | Single-file Go/Python glue, run-once or cron, no app test harness | Short plan if non-trivial -> implement minimal script -> smoke-test safe input -> docs if reusable. |
 | Debug | Bug report, failing test, stack trace, unexpected behavior | Reproduce -> hypothesize -> instrument/read -> fix the cause -> verify the exact failure is gone -> note findings if concrete. |
 | Research | "How does X work", compare options, repo exploration, no code change | Read and report. Use Obsidian when this is Ops/Infra, Debug, architecture, or reusable research. |
+| Repo-maintenance | Dependency bumps, CI cleanup, docs cleanup, tests, release metadata, repository hygiene, stale config, or convention maintenance | Inspect current convention -> split independent areas such as CI/deps/docs/tests/release -> use subagents where useful -> edit surgically -> run affected validation -> update docs/notes when conventions change. |
 | Ambiguous | Multiple buckets fit or scope is unclear | Ask a concise clarifying question before edits. |
 
 Escalate Light Ops to Heavy Ops if the diff grows beyond roughly 50 lines, spreads across files, touches prod/secrets/network, reveals a deeper design issue, or repeats across multiple repos.
+
+## Bucket Contracts
+
+Use these contracts after classification. They keep global agent instructions short while making each bucket's first move, context requirement, delegation posture, and finish condition explicit.
+
+| Bucket | First move | Context / skills | Delegation default | Verification and finish |
+|---|---|---|---|---|
+| Trivia | Do the tiny change or answer directly. | No Obsidian, plan, or companion skill. | Never delegate. | Cheap check only if a file/command changed; no note. |
+| Light Ops | Inspect nearby convention before editing. | Use repo-native lint/fmt/schema checks; no Obsidian unless design risk appears. | Usually direct; optionally one cheap reviewer/validator child. | Targeted lint/fmt/check, summarize. Escalate if scope or risk grows. |
+| Heavy Ops | Name blast radius, assumptions, rollback/dry-run path. | Consult `codex-knowledge` / Obsidian before proposing approach; use sequential thinking when risk/tradeoffs are high. | Parallelize read-only discovery, risk review, and validation-plan review; parent keeps destructive actions. | Lint/validate/render/dry-run/smoke as applicable; docs and raw Obsidian note for concrete findings/fixes. |
+| App Code | Define success criteria and existing test shape. | Inspect project conventions; use TDD/review skills when behavior changes or tests exist. | Use implementer/reviewer subagents for independent modules only. | Targeted tests first, broader checks as needed; update docs if API/workflow changed. |
+| Script | Define input/output/exit-code, idempotency, and side effects. | Inspect runtime/schedule conventions; keep implementation minimal. | One implementer or reviewer for non-trivial scripts; avoid competing edits to same file. | Syntax check plus safe smoke test; for cron/launchd, verify schedule, locking/state, and logs. |
+| Debug | Reproduce or observe the exact failure before fixing. | Consult Obsidian for prior incidents/patterns; use systematic debugging for unclear root cause. | Spawn an independent investigator when bug is unclear: repro/logs vs code-path/config. | Verify the exact failure is gone; note concrete root cause/fix unless duplicate/trivial. |
+| Research | State the question, decision needed, and evidence bar. | Use Obsidian for Ops/Infra, Debug, architecture, or reusable research; use upstream docs/source when relevant. | Use 2-3 researchers when scope permits: upstream, local, Obsidian/org alternatives. | Report facts, assumptions, recommendation, confidence, risks, and next checks; no code changes. |
+| Repo-maintenance | Check git status/diff and preserve unrelated user changes. | Inspect affected areas: CI, deps, docs, tests, release metadata, config conventions. | Split independent inspectors where useful. | Run affected checks, report unrelated findings separately, update docs/notes if conventions change. |
+| Ambiguous | Ask one concise clarifying question, or proceed with an explicit low-risk assumption. | Do not load extra workflow beyond what is needed to clarify. | Do not delegate into unclear requirements. | No edits until scope is safe; reclassify after clarification. |
+
+## Subagent Acceleration Policy
+
+For substantial buckets, default to using available subagent or parallel-agent mechanisms when independent inspection, research, implementation, debugging-hypothesis, or review streams exist. This is a strong default, not blind fan-out: before doing substantial work directly, either spawn useful independent agents or state why delegation would slow the task down (single serial change, no independent workstream, tiny diff, destructive/interactive step, or missing context that only the parent has).
+
+Bucket-specific defaults:
+
+| Bucket | Subagent default |
+|---|---|
+| Trivia | No delegation. Do the tiny change directly. |
+| Light Ops | Usually direct; consider one independent reviewer/validator when cheap. |
+| Script | For non-trivial scripts, use one implementer or one reviewer; avoid competing edits to the same file. |
+| Research | Use 2-3 parallel researchers when scope permits: upstream docs/source, local repo/context, and prior Obsidian/organization knowledge. |
+| App Code | Prefer subagent-driven implementation plus spec/quality review when tasks touch independent modules. |
+| Debug | Use at least one independent investigator for unclear bugs: repro/logs vs code-path/config inspection. |
+| Heavy Ops | Parallelize read-only discovery, risk review, and validation-plan review; keep destructive actions in the parent session. |
+| Repo-maintenance | Split CI, dependencies, docs, tests, and release metadata inspection where useful. |
+| Ambiguous | Clarify first; do not spawn children into unclear requirements. |
+
+If the current Codex runtime does not expose a subagent tool, state that briefly and parallelize only with available safe read/search/terminal operations. Extra tokens, context gathering, and independent agent passes are acceptable when they materially improve correctness, reasoning quality, speed to a verified result, or failure-rate reduction; do not under-spec context just to save tokens.
+
+## Reasoning Guard Policy
+
+For substantial buckets, prefer evidence-gated reasoning over token thrift. Use sequential thinking or an equivalent explicit reasoning scaffold when any guard trigger is present:
+
+- Heavy Ops touching prod, network, secrets, permissions, data migration, or rollback-sensitive paths.
+- Unclear Debug/root-cause work, repeated failed fixes, or bugs with multiple plausible causes.
+- Architecture, migration, scaling, or performance decisions where tradeoffs matter.
+- Risky app-code refactors, cross-module behavior changes, or user requests for higher confidence.
+
+The reasoning guard should track:
+
+- `mode`: debugging, architecture, performance, ops, research, app-code, or repo-maintenance.
+- `evidence`: tool-backed refs such as file paths/line ranges, command output, CI/job IDs, fetched docs, Obsidian note paths, benchmark results, or deployment/dry-run output.
+- `alternatives`: at least two options for architecture/Heavy Ops decisions and at least two falsifiable hypotheses for unclear Debug.
+- `confidence`: confidence claims above 80 require tool-backed evidence plus a verification plan; otherwise lower the confidence or gather more evidence.
+- `budget`: 2-3 thoughts for light analysis, 3-5 for standard debug/research, and 5-8 for high-risk architecture/Heavy Ops. Continue past the budget only when new evidence, a branch, or a contradiction is reducing risk.
+
+Mode-specific stop/go checks:
+
+- Debug: do not fix before reproducing or observing the exact failure and naming at least one falsifiable hypothesis.
+- Heavy Ops: do not apply before naming blast radius, rollback/dry-run path, secret/network boundary, and validation.
+- Architecture: do not recommend before comparing alternatives, tradeoffs, and the decision rule; emit a compact decision/ADR summary when a choice is made.
+- Performance: do not claim improvement without a baseline, target metric, and measurement/benchmark command or a stated reason measurement is impossible.
+- Research: distinguish fetched/source-backed facts from assumptions and cite only docs/notes actually read.
+
+Persist only durable outcomes: compact project notes, skills, or memory entries that record decision, evidence, verification, and later outcome. Prefer decision/outcome records over raw thought traces.
 
 ## Always-On Principles
 
@@ -40,7 +112,7 @@ Escalate Light Ops to Heavy Ops if the diff grows beyond roughly 50 lines, sprea
 
 ## Codex-Specific Adaptation
 
-- Do not copy Claude custom-agent routing literally. Codex subagents are only available when the user explicitly asks for delegation/parallel agents; otherwise keep orchestration local and parallelize shell reads with available tooling.
+- Do not copy Claude custom-agent routing literally. Use Codex subagents/parallel agents when the runtime exposes them and they materially improve correctness or latency; otherwise keep orchestration local and use available tools for safe parallel read/search work.
 - Do not use or invent Beads, `bd`, `template-bridge`, or mandatory task-tracker commands. Those tools are not currently available.
 - Do not use git worktrees unless the user explicitly asks. Work directly in the current checkout.
 - Use project-local `AGENTS.md` as the durable instruction surface. If a repo has `CLAUDE.md`, migrate relevant project instructions into `AGENTS.md` when safe.

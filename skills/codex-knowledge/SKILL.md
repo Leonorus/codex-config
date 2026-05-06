@@ -21,7 +21,7 @@ Vault root: `~/Obsidian/Work/`.
 
 ## Search Before Acting
 
-For Heavy Ops, Debug, and architecture choices:
+For Ops/Infra, Debug, architecture choices, and reusable research:
 
 1. Search `Projects/<current-repo>/`, `Knowledge/`, and `Organization/`.
 2. Use direct keyword overlap: component names, hostnames, error strings, ticket IDs, module names.
