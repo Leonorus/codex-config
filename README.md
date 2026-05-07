@@ -25,7 +25,7 @@ not tracked here because Codex does not consume them directly.
 Claude hook equivalents ported to Codex:
 
 - `SessionStart`: injects a compact Obsidian vault index.
-- `UserPromptSubmit`: reminds Codex to load/use `codex-workflow`, state the bucket, apply matching weight, consult codex-workflow's Obsidian Knowledge Workflow (or `codex-knowledge` where active) for Ops/Infra, Debug, architecture choices, and reusable research, and prefer evidence-gated reasoning over token thrift for substantial buckets.
+- `UserPromptSubmit`: reminds Codex/Hermes-style runtimes to call Workflow MCP first when available, treat the returned packet as a structured checklist rather than unquestionable authority, fall back to a corrected bucket or `codex-workflow` when stale/wrong/unavailable, read directly relevant Obsidian notes for Ops/Infra, Debug, architecture choices, and reusable research, and prefer evidence-gated reasoning over token thrift for substantial buckets.
 - `Stop`: auto-syncs tracked `~/.codex` config and `~/Obsidian/Work/Knowledge`.
 
 Not ported 1:1:

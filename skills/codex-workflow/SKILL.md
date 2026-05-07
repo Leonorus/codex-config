@@ -1,6 +1,6 @@
 ---
 name: codex-workflow
-description: Classify and run Filipp's proportional Codex engineering workflow. Use first for substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance tasks; state the bucket out loud, apply the matching weight, and skip only for casual chat, simple factual answers, or clear follow-ups to an already-classified task.
+description: Canonical human-readable policy for Filipp's proportional Codex engineering workflow; Workflow MCP is the preferred structured front door when available, with this skill as fallback/source of truth.
 ---
 
 # Codex Workflow
@@ -9,7 +9,9 @@ This is the Codex port of the Claude `classify-task` workflow. It is the source 
 
 ## Start-of-task Rule
 
-For substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance work, load and use this skill before planning, proposing an approach, or editing files. State one visible sentence:
+For substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance work, use Workflow MCP first when the current runtime exposes it: call `mcp_workflow_start_task` before planning, proposing an approach, or editing files; pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured oracle/checklist rather than unquestionable authority: state its `visible_statement` unless user correction or gathered evidence shows the bucket is wrong, in which case state the corrected bucket and why. Then load/use this skill and any other returned `required_skills`, and follow the relevant contract, note candidates, delegation hint, reasoning-guard flag, and finish checklist.
+
+This skill remains the canonical human-readable policy. If Workflow MCP is unavailable, fails, stale, not exposed in Codex, or produces an obviously wrong classification, use this skill directly and state one visible sentence:
 
 `Bucket: <bucket> — <why>; applying <matching workflow weight>.`
 
@@ -95,6 +97,10 @@ Mode-specific stop/go checks:
 - Research: distinguish fetched/source-backed facts from assumptions and cite only docs/notes actually read.
 
 Persist only durable outcomes: compact project notes, skills, or memory entries that record decision, evidence, verification, and later outcome. Prefer decision/outcome records over raw thought traces.
+
+## Workflow MCP and Obsidian Context
+
+For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_workflow_start_task` candidate notes or `mcp_workflow_discover_context` when Workflow MCP is available, then read the directly relevant Obsidian notes before proposing an approach. Without Workflow MCP, consult `codex-knowledge` manually. Candidate paths are routing metadata, not citations; cite only notes actually read.
 
 ## Always-On Principles
 
