@@ -171,3 +171,4 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "curl -fsS http://127.0.0.1:8811/health 
 prefix_rule(pattern=["lsof", "-nP", "-iTCP:8811", "-sTCP:LISTEN"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "hermes mcp test docker_gateway | sed -n \"1,12p\""], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "codex exec --ephemeral --model gpt-5.4-mini -C /Users/filipp.vysokov/Projects/capi \"Reply exactly CODEX_MCP_START_OK\""], decision="allow")
+prefix_rule(pattern=["python3", "-c", "from pathlib import Path; p=Path(\"/Users/filipp.vysokov/.codex/config.toml\"); s=p.read_text(); backup=p.with_suffix(p.suffix+\".bak-effort-high\"); backup.write_text(s); ns=s.replace(\"model_reasoning_effort = \\\"xhigh\\\"\", \"model_reasoning_effort = \\\"high\\\"\", 1); p.write_text(ns); print(\"updated\" if ns != s else \"no change\")"], decision="allow")
