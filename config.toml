@@ -72,6 +72,17 @@ status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
+[hooks.state]
+
+[hooks.state."/Users/filipp.vysokov/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:f5cf26c05bdbec950957629ff68da6e4e2bb554514e31054673e43882451d15d"
+
+[hooks.state."/Users/filipp.vysokov/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:45e74039c3bd2114552371108fd1dd3b1af20ca3618cc75d35821c406009bb48"
+
+[hooks.state."/Users/filipp.vysokov/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:18dad40cebcc86b484731bee4287210f91084d99a004c3fc8008a0a282f147bc"
+
 [mcp_servers.engram]
 command = "/opt/homebrew/bin/engram"
 args = ["mcp", "--tools=agent"]
