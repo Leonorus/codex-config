@@ -9,7 +9,9 @@ This is the Codex port of the Claude `classify-task` workflow. It is the source 
 
 ## Start-of-task Rule
 
-For substantial software, DevOps, infrastructure, debugging, research, or repo-maintenance work, use Workflow MCP first when the current runtime exposes it: call `mcp_workflow_start_task` before planning, proposing an approach, or editing files; pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured oracle/checklist rather than unquestionable authority: state its `visible_statement` unless user correction or gathered evidence shows the bucket is wrong, in which case state the corrected bucket and why. Then load/use this skill and any other returned `required_skills`, and follow the relevant contract, note candidates, delegation hint, reasoning-guard flag, and finish checklist.
+Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow/Obsidian MCP before Obsidian claims. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
+
+In Codex runtimes that expose Workflow MCP, treat that line as the first-move rule before planning, proposing an approach, or editing files. Pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured checklist rather than unquestionable authority; override it when user correction or gathered evidence shows the bucket is wrong.
 
 This skill remains the canonical human-readable policy. If Workflow MCP is unavailable, fails, stale, not exposed in Codex, or produces an obviously wrong classification, use this skill directly and state one visible sentence:
 
@@ -115,6 +117,10 @@ For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_work
 - After implementation, update affected project docs and `AGENTS.md` instructions when the change alters workflow, commands, architecture, or conventions.
 - Heavy Ops and Debug with a shipped fix or concrete findings should write a raw Obsidian note unless duplicate or trivial.
 - Other non-trivia buckets should ask whether to take a note, with a one-line summary and target path.
+- Use `Projects/<repo>/YYYY-MM-DD-<slug>.md` for raw notes.
+- After creating or updating a raw project note, run targeted Obsidian discovery against `Projects/<repo>/`, `Knowledge/`, and `Organization/` to decide whether the new finding should be promoted, linked, or left raw.
+- Promote to `Knowledge/` when the pattern plausibly applies at 5+ different employers; update the Knowledge page, `Knowledge/index.md`, and `Knowledge/log.md` in the same pass.
+- Put internal hostnames, concrete service graphs, ticket IDs, employee names, org codenames, and company-specific runbooks in `Organization/`; update `Organization/index.md`/`log.md` when making synthesis-layer changes there.
 
 ## Codex-Specific Adaptation
 

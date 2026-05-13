@@ -35,7 +35,9 @@ For non-trivia tasks:
 - Heavy Ops and Debug with a shipped fix or concrete findings: write a raw note automatically unless it is duplicate or trivial.
 - Other non-trivia tasks: ask "Take a note for this?" with a one-line summary and target path.
 - Use `Projects/<repo>/YYYY-MM-DD-<slug>.md` for raw notes.
-- After raw note capture, propose promotion only when there is a genuinely reusable pattern.
+- After creating or updating a raw project note, run targeted discovery across `Projects/<repo>/`, `Knowledge/`, and `Organization/` to decide whether the new finding should be promoted, linked, or left raw.
+- Promote to `Knowledge/` only when there is a genuinely reusable pattern that plausibly applies at 5+ different employers; update the Knowledge page, `Knowledge/index.md`, and `Knowledge/log.md` in the same pass.
+- Put organization-specific material in `Organization/` and update `Organization/index.md`/`log.md` when making synthesis-layer changes there.
 
 ## Promotion Rules
 

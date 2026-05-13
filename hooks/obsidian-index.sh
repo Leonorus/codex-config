@@ -1,44 +1,9 @@
 #!/bin/sh
-# SessionStart hook: emit a compact index of the Obsidian vault so Codex
-# knows what notes exist without reading any of them.
+# SessionStart hook: trigger-only Obsidian/Workflow MCP reminder.
+# Do not read vault indexes or inject note candidates from hooks.
 
-set -u
-
-VAULT="${HOME}/Obsidian/Work"
-MAX_LINES=200
-
-[ -d "$VAULT" ] || exit 0
-
-printf '=== Obsidian vault index (%s) ===\n' "$VAULT"
-printf 'Use Obsidian MCP tools or filesystem fallback to read matching notes.\n\n'
-
-count=0
-find "$VAULT" -type f -name '*.md' 2>/dev/null | sort | while IFS= read -r f; do
-  rel="${f#$VAULT/}"
-  case "$rel" in
-    .*|.obsidian/*) continue ;;
-  esac
-
-  tags=$(awk '
-    /^---[[:space:]]*$/ { f++; if (f==2) exit; next }
-    f==1 && /^tags:/ {
-      sub(/^tags:[[:space:]]*/, "")
-      print
-      exit
-    }
-  ' "$f" 2>/dev/null)
-
-  if [ -n "$tags" ]; then
-    printf -- '- %s %s\n' "$rel" "$tags"
-  else
-    printf -- '- %s\n' "$rel"
-  fi
-
-  count=$((count + 1))
-  if [ "$count" -ge "$MAX_LINES" ]; then
-    printf '... (truncated at %d notes)\n' "$MAX_LINES"
-    break
-  fi
-done
+cat <<'EOF'
+Obsidian: hook is trigger-only; do not infer or cite note candidates from it. For Ops/Infra/Debug/architecture/reusable research, use Workflow MCP start_task/discover_context or Obsidian MCP, then read matching notes before claims. Vault: ~/Obsidian/Work.
+EOF
 
 exit 0

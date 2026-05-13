@@ -8,7 +8,7 @@
             "type": "command",
             "command": "sh /Users/filipp.vysokov/.codex/hooks/obsidian-index.sh",
             "timeout": 10,
-            "statusMessage": "Loading Obsidian index"
+            "statusMessage": "Obsidian trigger reminder"
           }
         ]
       }
