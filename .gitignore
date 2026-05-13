@@ -28,3 +28,6 @@
 !skills/codex-knowledge/agents/
 !skills/codex-knowledge/agents/openai.yaml
 !version.json
+# Split workflow bucket contract skills.
+!skills/workflow-*-contract/
+!skills/workflow-*-contract/SKILL.md

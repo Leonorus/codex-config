@@ -66,6 +66,9 @@ bearer_token_env_var = "MCP_GATEWAY_AUTH_TOKEN"
 [mcp_servers.gitlab]
 url = "http://127.0.0.1:8812/mcp"
 
+[mcp_servers.workflow]
+url = "http://127.0.0.1:8813/mcp"
+
 [tui]
 status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
