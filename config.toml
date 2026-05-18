@@ -63,12 +63,21 @@ fast_default_opt_out = true
 [mcp_servers.docker_gateway]
 url = "http://127.0.0.1:8811/mcp"
 bearer_token_env_var = "MCP_GATEWAY_AUTH_TOKEN"
+default_tools_approval_mode = "approve"
 
 [mcp_servers.gitlab]
 url = "http://127.0.0.1:8812/mcp"
+default_tools_approval_mode = "approve"
 
 [mcp_servers.workflow]
 url = "http://127.0.0.1:8813/mcp"
+default_tools_approval_mode = "approve"
+
+[mcp_servers.workflow.tools.start_task]
+approval_mode = "approve"
+
+[mcp_servers.workflow.tools.finish_checklist]
+approval_mode = "approve"
 
 [tui]
 status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
@@ -91,3 +100,4 @@ trusted_hash = "sha256:18dad40cebcc86b484731bee4287210f91084d99a004c3fc8008a0a28
 [mcp_servers.engram]
 command = "/opt/homebrew/bin/engram"
 args = ["mcp", "--tools=agent"]
+default_tools_approval_mode = "approve"
