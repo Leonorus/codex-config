@@ -6,7 +6,7 @@ experimental_compact_prompt_file = "/Users/filipp.vysokov/.codex/engram-compact-
 service_tier = "fast"
 
 [features]
-codex_hooks = true
+hooks = true
 
 [shell_environment_policy]
 inherit = "all"
@@ -78,7 +78,8 @@ status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 [hooks.state]
 
 [hooks.state."/Users/filipp.vysokov/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:f5cf26c05bdbec950957629ff68da6e4e2bb554514e31054673e43882451d15d"
+enabled = true
+trusted_hash = "sha256:6f8f08871f8b1f43f12ba7d0660c19682969a6492ee8b8d1c729cf846dd3d114"
 
 [hooks.state."/Users/filipp.vysokov/.codex/hooks.json:stop:0:0"]
 trusted_hash = "sha256:45e74039c3bd2114552371108fd1dd3b1af20ca3618cc75d35821c406009bb48"
