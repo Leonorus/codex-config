@@ -32,6 +32,7 @@ For Ops/Infra, Debug, architecture choices, and reusable research:
 
 For non-trivia tasks:
 
+- When Obsidian MCP write tools are available, use them as the note write surface; do not create or update vault notes with shell redirection, heredocs, Python, or raw filesystem edits. If MCP is unavailable, state the fallback before using filesystem writes.
 - Heavy Ops and Debug with a shipped fix or concrete findings: write a raw note automatically unless it is duplicate or trivial.
 - Other non-trivia tasks: ask "Take a note for this?" with a one-line summary and target path.
 - Use `Projects/<repo>/YYYY-MM-DD-<slug>.md` for raw notes.
