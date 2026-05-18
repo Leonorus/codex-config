@@ -183,3 +183,4 @@ prefix_rule(pattern=["kubectl", "--kubeconfig", "mgmt-clusters/qacapi1/.kubeconf
 prefix_rule(pattern=["source", "scripts/common.sh"], decision="allow")
 prefix_rule(pattern=["load_mgmt_env", "qacapi1"], decision="allow")
 prefix_rule(pattern=["git", "-C", "/Users/filipp.vysokov/Projects/gitlab-actions", "fetch"], decision="allow")
+prefix_rule(pattern=["git", "-C", "/Users/filipp.vysokov/Projects/gitlab-actions", "ls-remote"], decision="allow")
