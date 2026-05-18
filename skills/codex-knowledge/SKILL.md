@@ -25,14 +25,14 @@ For Ops/Infra, Debug, architecture choices, and reusable research:
 
 1. Search `Projects/<current-repo>/`, `Knowledge/`, and `Organization/`.
 2. Use direct keyword overlap: component names, hostnames, error strings, ticket IDs, module names.
-3. Prefer Obsidian MCP tools when available. If not available, use filesystem reads under `~/Obsidian/Work/` and state the fallback.
+3. Prefer Obsidian MCP read/search/list tools when available. If not available, use filesystem reads under `~/Obsidian/Work/` and state the fallback before reading.
 4. Cite only directly relevant notes. Do not cite tangential pages.
 
 ## End-Of-Task Notes
 
 For non-trivia tasks:
 
-- When Obsidian MCP write tools are available, use them as the note write surface; do not create or update vault notes with shell redirection, heredocs, Python, or raw filesystem edits. If MCP is unavailable, state the fallback before using filesystem writes.
+- When Obsidian MCP tools are available, use them as the note read/write surface; do not read, create, or update vault notes with shell commands, raw filesystem access, redirection, heredocs, or Python unless MCP is unavailable. If MCP is unavailable, state the fallback before filesystem access.
 - Heavy Ops and Debug with a shipped fix or concrete findings: write a raw note automatically unless it is duplicate or trivial.
 - Other non-trivia tasks: ask "Take a note for this?" with a one-line summary and target path.
 - Use `Projects/<repo>/YYYY-MM-DD-<slug>.md` for raw notes.

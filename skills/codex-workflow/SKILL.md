@@ -9,7 +9,7 @@ This is the Codex port of the Claude `classify-task` workflow. It is the source 
 
 ## Start-of-task Rule
 
-Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow/Obsidian MCP before Obsidian claims. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
+Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow/Obsidian MCP before Obsidian claims and for workflow note reads/writes. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
 
 In Codex runtimes that expose Workflow MCP, treat that line as the first-move rule before planning, proposing an approach, or editing files. Pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured checklist rather than unquestionable authority; override it when user correction or gathered evidence shows the bucket is wrong.
 
@@ -102,7 +102,7 @@ Persist only durable outcomes: compact project notes, skills, or memory entries 
 
 ## Workflow MCP and Obsidian Context
 
-For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_workflow_start_task` candidate notes or `mcp_workflow_discover_context` when Workflow MCP is available, then read the directly relevant Obsidian notes before proposing an approach. Without Workflow MCP, consult `codex-knowledge` manually. Candidate paths are routing metadata, not citations; cite only notes actually read.
+For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_workflow_start_task` candidate notes or `mcp_workflow_discover_context` when Workflow MCP is available, then read the directly relevant Obsidian notes via Obsidian MCP before proposing an approach. Without Workflow MCP, consult `codex-knowledge` manually. Candidate paths are routing metadata, not citations; cite only notes actually read.
 
 ## Always-On Principles
 
@@ -115,7 +115,7 @@ For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_work
 
 - For Ops/Infra, Debug, architecture choices, and reusable research, consult `codex-knowledge` before proposing an approach.
 - After implementation, update affected project docs and `AGENTS.md` instructions when the change alters workflow, commands, architecture, or conventions.
-- For workflow note writes or updates, use Obsidian MCP write tools as the first write surface; avoid shell redirection, heredocs, Python scripts, or raw filesystem edits for vault notes unless Obsidian MCP is unavailable, then state the fallback.
+- For workflow note reads, writes, or updates, use Obsidian MCP tools as the first note surface; avoid shell commands, raw filesystem access, redirection, heredocs, or Python scripts for vault notes unless Obsidian MCP is unavailable, then state the fallback.
 - Heavy Ops and Debug with a shipped fix or concrete findings should write a raw Obsidian note unless duplicate or trivial.
 - Other non-trivia buckets should ask whether to take a note, with a one-line summary and target path.
 - Use `Projects/<repo>/YYYY-MM-DD-<slug>.md` for raw notes.
