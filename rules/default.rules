@@ -192,3 +192,4 @@ prefix_rule(pattern=["kubectl", "--request-timeout=10s", "--kubeconfig", "mgmt-c
 prefix_rule(pattern=["/bin/zsh", "-lc", "kubectl --request-timeout=10s --kubeconfig mgmt-clusters/qacapi1/clusters/qak8scapicl1/.kubeconfig get clustersecretstore,secretstore,externalsecret --all-namespaces 2>&1 | sed -n '1,120p'"], decision="allow")
 prefix_rule(pattern=["sleep", "15"], decision="allow")
 prefix_rule(pattern=["mkdir", "-p", "/Users/filipp.vysokov/Obsidian/Work/Projects/cluster-api-provider-proxmox"], decision="allow")
+prefix_rule(pattern=["rtk", "make", "test"], decision="allow")
