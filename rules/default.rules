@@ -199,3 +199,4 @@ prefix_rule(pattern=["mkdir", "-p", "/Users/filipp.vysokov/Obsidian/Work/Project
 prefix_rule(pattern=["rtk", "make", "test"], decision="allow")
 prefix_rule(pattern=["git", "tag", "-a"], decision="allow")
 prefix_rule(pattern=["curl", "-fsSI"], decision="allow")
+prefix_rule(pattern=["rtk", "make", "cluster-health-debug"], decision="allow")
