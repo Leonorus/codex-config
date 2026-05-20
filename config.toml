@@ -1,8 +1,6 @@
 model = "gpt-5.5"
 model_reasoning_effort = "high"
 
-model_instructions_file = "/Users/filipp.vysokov/.codex/engram-instructions.md"
-experimental_compact_prompt_file = "/Users/filipp.vysokov/.codex/engram-compact-prompt.md"
 service_tier = "fast"
 
 [features]
@@ -97,7 +95,3 @@ trusted_hash = "sha256:45e74039c3bd2114552371108fd1dd3b1af20ca3618cc75d35821c406
 [hooks.state."/Users/filipp.vysokov/.codex/hooks.json:user_prompt_submit:0:0"]
 trusted_hash = "sha256:18dad40cebcc86b484731bee4287210f91084d99a004c3fc8008a0a282f147bc"
 
-[mcp_servers.engram]
-command = "/opt/homebrew/bin/engram"
-args = ["mcp", "--tools=agent"]
-default_tools_approval_mode = "approve"
