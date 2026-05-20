@@ -208,3 +208,4 @@ prefix_rule(pattern=["yq", "e", ".items[] | select(.metadata.name == \"linstor-c
 prefix_rule(pattern=["rtk", "kubectl"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --kubeconfig mgmt-clusters/qacapi1/.kubeconfig get machines -l cluster.x-k8s.io/cluster-name=qak8scapicl1 -o custom-columns=NAME:.metadata.name,DELETING:.metadata.deletionTimestamp,OWNER:.metadata.ownerReferences[0].kind,OWNERNAME:.metadata.ownerReferences[0].name,READY:.status.conditions[?(@.type==\"Ready\")].status,PHASE:.status.phase,NODE:.status.nodeRef.name,PROVIDER:.spec.providerID --sort-by=.metadata.creationTimestamp"], decision="allow")
 prefix_rule(pattern=["git", "status", "--short", "--branch"], decision="allow")
+prefix_rule(pattern=["grep", "-E", "qak8scapicl1-(cp|worker).*-bootstrap-data"], decision="allow")
