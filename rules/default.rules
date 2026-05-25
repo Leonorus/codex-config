@@ -226,3 +226,4 @@ prefix_rule(pattern=["sudo", "-n", "killall", "opendirectoryd"], decision="allow
 prefix_rule(pattern=["grep", "-E", "(^ *PID|sudo -n killall opendirectoryd|killall opendirectoryd)"], decision="allow")
 prefix_rule(pattern=["/usr/bin/login"], decision="allow")
 prefix_rule(pattern=["grep", "-E", "(^ *PID|/usr/bin/login -pfl filipp\\.vysokov|TERMINAL_LOGIN_TEST_OK)"], decision="allow")
+prefix_rule(pattern=["launchctl", "kickstart"], decision="allow")
