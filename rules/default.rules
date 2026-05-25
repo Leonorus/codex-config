@@ -216,3 +216,4 @@ prefix_rule(pattern=["rg", "logstash-prod-logstash-tl|component_type=\"socket\"|
 prefix_rule(pattern=["jq", "-r", "[has(\"k8s_nginx_json\"), has(\"image\"), (.logtype // \"\"), (keys_unsorted|join(\",\"))] | @tsv"], decision="allow")
 prefix_rule(pattern=["jq", "-r", ".items[] | {name:.metadata.name,type:.spec.type,loki_keys:(.spec.loki|keys_unsorted? // []),logstash_keys:(.spec.logstash|keys_unsorted? // []),loki_labels:(.spec.loki.labels // .spec.loki.extraLabels // null)}"], decision="allow")
 prefix_rule(pattern=["rg", "-i", "ingress.*nginx|nginx"], decision="allow")
+prefix_rule(pattern=["base64", "-d"], decision="allow")
