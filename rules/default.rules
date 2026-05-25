@@ -210,3 +210,5 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --kubeconfig mgmt-clusters/
 prefix_rule(pattern=["git", "status", "--short", "--branch"], decision="allow")
 prefix_rule(pattern=["grep", "-E", "qak8scapicl1-(cp|worker).*-bootstrap-data"], decision="allow")
 prefix_rule(pattern=["rtk", "make", "cluster-capmox-ghost-cleanup"], decision="allow")
+prefix_rule(pattern=["awk", "$2==\"<none>\" {print $1}"], decision="allow")
+prefix_rule(pattern=["awk", "$1 ~ /^(ai|ai-chat|observability|theater|webpms)$/ && $3!=\"stdoutjson\" {print}"], decision="allow")
