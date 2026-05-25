@@ -213,3 +213,6 @@ prefix_rule(pattern=["rtk", "make", "cluster-capmox-ghost-cleanup"], decision="a
 prefix_rule(pattern=["awk", "$2==\"<none>\" {print $1}"], decision="allow")
 prefix_rule(pattern=["awk", "$1 ~ /^(ai|ai-chat|observability|theater|webpms)$/ && $3!=\"stdoutjson\" {print}"], decision="allow")
 prefix_rule(pattern=["rg", "logstash-prod-logstash-tl|component_type=\"socket\"|component_type=\"logstash\"|Missing fields|template_failed|component_kind=\"sink\"|crs"], decision="allow")
+prefix_rule(pattern=["jq", "-r", "[has(\"k8s_nginx_json\"), has(\"image\"), (.logtype // \"\"), (keys_unsorted|join(\",\"))] | @tsv"], decision="allow")
+prefix_rule(pattern=["jq", "-r", ".items[] | {name:.metadata.name,type:.spec.type,loki_keys:(.spec.loki|keys_unsorted? // []),logstash_keys:(.spec.logstash|keys_unsorted? // []),loki_labels:(.spec.loki.labels // .spec.loki.extraLabels // null)}"], decision="allow")
+prefix_rule(pattern=["rg", "-i", "ingress.*nginx|nginx"], decision="allow")
