@@ -69,6 +69,9 @@ trust_level = "trusted"
 [projects."/Users/filipp.vysokov/Projects/reactor-scaffold"]
 trust_level = "trusted"
 
+[projects."/Users/filipp.vysokov/Projects/ratematch"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 fast_default_opt_out = true
