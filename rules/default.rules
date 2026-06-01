@@ -254,3 +254,7 @@ prefix_rule(pattern=["jq", "-r", "{desired:.spec.replicas, replicas:.status.repl
 prefix_rule(pattern=["rg", "-n", "createApiTLS|createInternalTLS|apiTLS|internalTLS|caReference|cert-manager|self"], decision="allow")
 prefix_rule(pattern=["sed", "-n", "30,118p"], decision="allow")
 prefix_rule(pattern=["helm", "pull"], decision="allow")
+prefix_rule(pattern=["bash", "-lc", "source scripts/common.sh && load_mgmt_env qacapi1 && kubectl -n default get machines,proxmoxmachines,taloscontrolplanes -l cluster.x-k8s.io/cluster-name=qak8scapicl1 -o wide"], decision="allow")
+prefix_rule(pattern=["rtk", "talosctl", "--talosconfig", "mgmt-clusters/qacapi1/clusters/qak8scapicl1/.talosconfig", "--nodes", "192.168.160.3", "--endpoints", "192.168.160.3", "logs", "etcd", "--tail", "300"], decision="allow")
+prefix_rule(pattern=["rtk", "talosctl", "--talosconfig", "mgmt-clusters/qacapi1/clusters/qak8scapicl1/.talosconfig", "--nodes", "192.168.160.4", "--endpoints", "192.168.160.3", "logs", "etcd", "--tail", "300"], decision="allow")
+prefix_rule(pattern=["rtk", "talosctl", "--talosconfig", "mgmt-clusters/qacapi1/clusters/qak8scapicl1/.talosconfig", "--nodes", "192.168.160.6", "--endpoints", "192.168.160.3", "logs", "etcd", "--tail", "300"], decision="allow")
