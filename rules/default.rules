@@ -227,3 +227,7 @@ prefix_rule(pattern=["grep", "-E", "(^ *PID|sudo -n killall opendirectoryd|killa
 prefix_rule(pattern=["/usr/bin/login"], decision="allow")
 prefix_rule(pattern=["grep", "-E", "(^ *PID|/usr/bin/login -pfl filipp\\.vysokov|TERMINAL_LOGIN_TEST_OK)"], decision="allow")
 prefix_rule(pattern=["launchctl", "kickstart"], decision="allow")
+prefix_rule(pattern=["terraform", "init"], decision="allow")
+prefix_rule(pattern=["terraform", "validate"], decision="allow")
+prefix_rule(pattern=["curl", "-sS"], decision="allow")
+prefix_rule(pattern=["rm", "environments/qa/.terraform/travelline_lan_CA.crt"], decision="allow")
