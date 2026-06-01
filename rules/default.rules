@@ -279,3 +279,4 @@ prefix_rule(pattern=["rg", "-n", "5f704911|p7p95|192\\.168\\.160\\.13"], decisio
 prefix_rule(pattern=["rg", "-n", "5f704911|p7p95|192\\.168\\.160\\.13|dbf572c7"], decision="allow")
 prefix_rule(pattern=["rg", "-n", "server has already been initialized|data-dir=/var/lib/etcd|local-member-id|permanently removed|data-dir used|Bootstrapping WAL|restarting local member"], decision="allow")
 prefix_rule(pattern=["rg", "-n", "2026-06-01T14:0|server has already been initialized|starting local member|starting etcd server|created member|added member|removed member|permanently removed|data-dir used|initial-cluster|Running: "], decision="allow")
+prefix_rule(pattern=["rtk", "talosctl"], decision="allow")
