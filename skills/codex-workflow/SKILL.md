@@ -55,20 +55,20 @@ Use these contracts after classification. They keep global agent instructions sh
 
 ## Subagent Acceleration Policy
 
-For substantial buckets, default to using available subagent or parallel-agent mechanisms when independent inspection, research, implementation, debugging-hypothesis, or review streams exist. This is a strong default, not blind fan-out: before doing substantial work directly, either spawn useful independent agents or state why delegation would slow the task down (single serial change, no independent workstream, tiny diff, destructive/interactive step, or missing context that only the parent has).
+For substantial buckets, default to using available subagent or parallel-agent mechanisms when independent inspection, research, implementation, debugging-hypothesis, or review streams exist. Read-only delegation is free and explicitly user-authorized for code review, repo investigation, debugging, research, risk review, and validation planning; no separate confirmation is needed unless a child may mutate state or touch restricted external systems. This is a strong default, not blind fan-out: before doing substantial work directly, either spawn useful independent agents or state why delegation would slow the task down (single serial change, no independent workstream, tiny diff, destructive/interactive step, or missing context that only the parent has).
 
 Bucket-specific defaults:
 
 | Bucket | Subagent default |
 |---|---|
 | Trivia | No delegation. Do the tiny change directly. |
-| Light Ops | Usually direct; consider one independent reviewer/validator when cheap. |
+| Light Ops | Usually direct; read-only reviewer/validator delegation is free when useful. |
 | Script | For non-trivial scripts, use one implementer or one reviewer; avoid competing edits to the same file. |
 | Research | Use 2-3 parallel researchers when scope permits: upstream docs/source, local repo/context, and prior Obsidian/organization knowledge. |
-| App Code | Prefer subagent-driven implementation plus spec/quality review when tasks touch independent modules. |
-| Debug | Use at least one independent investigator for unclear bugs: repro/logs vs code-path/config inspection. |
-| Heavy Ops | Parallelize read-only discovery, risk review, and validation-plan review; keep destructive actions in the parent session. |
-| Repo-maintenance | Split CI, dependencies, docs, tests, and release metadata inspection where useful. |
+| App Code | Read-only reviewers and test-shape inspectors are free; use implementer subagents for independent modules only. |
+| Debug | Freely use at least one read-only investigator for unclear bugs: repro/logs vs code-path/config inspection. |
+| Heavy Ops | Freely parallelize read-only discovery, risk review, and validation-plan review; keep destructive actions in the parent session. |
+| Repo-maintenance | Freely split read-only CI, dependencies, docs, tests, and release metadata inspection where useful. |
 | Ambiguous | Clarify first; do not spawn children into unclear requirements. |
 
 If the current Codex runtime does not expose a subagent tool, state that briefly and parallelize only with available safe read/search/terminal operations. Extra tokens, context gathering, and independent agent passes are acceptable when they materially improve correctness, reasoning quality, speed to a verified result, or failure-rate reduction; do not under-spec context just to save tokens.
