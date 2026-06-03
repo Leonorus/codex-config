@@ -305,3 +305,6 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "code=$(curl -sS -o /private/tmp/vault-q
 prefix_rule(pattern=["/bin/zsh", "-lc", "curl -fsS --header \"PRIVATE-TOKEN: ${GITLAB_PERSONAL_ACCESS_TOKEN}\" -o /private/tmp/vault-qa-state-push.6D6hl3/current-after-split-upload-vault-configuration-qa.tfstate https://gitlab.tl-lan.ru/api/v4/projects/82/terraform/state/vault-configuration-qa"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "code=$(curl -sS -o /private/tmp/vault-qa-state-push.6D6hl3/post-vault-configuration-qa-residual-serial-355.json -w '%{http_code}' --request POST --header \"PRIVATE-TOKEN: ${GITLAB_PERSONAL_ACCESS_TOKEN}\" --header \"Content-Type: application/json\" --data-binary @/private/tmp/vault-qa-state-push.6D6hl3/vault-configuration-qa-residual-serial-355.tfstate \"https://gitlab.tl-lan.ru/api/v4/projects/82/terraform/state/vault-configuration-qa\"); printf '%s vault-configuration-qa\\n' \"$code\""], decision="allow")
 prefix_rule(pattern=["mkdir", "-p", "terraform/environments/qa/units"], decision="allow")
+prefix_rule(pattern=["git", "commit"], decision="allow")
+prefix_rule(pattern=["git", "merge"], decision="allow")
+prefix_rule(pattern=["git", "worktree"], decision="allow")
