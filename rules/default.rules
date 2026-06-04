@@ -308,3 +308,4 @@ prefix_rule(pattern=["mkdir", "-p", "terraform/environments/qa/units"], decision
 prefix_rule(pattern=["git", "commit"], decision="allow")
 prefix_rule(pattern=["git", "merge"], decision="allow")
 prefix_rule(pattern=["git", "worktree"], decision="allow")
+prefix_rule(pattern=["rtk", "git"], decision="allow")
