@@ -327,3 +327,4 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "tmpk=$(mktemp); rtk kubectl --request-t
 prefix_rule(pattern=["/bin/zsh", "-lc", "tmpt=$(mktemp); rtk kubectl --request-timeout=10s --kubeconfig mgmt-clusters/qacapi1/.kubeconfig -n default get secret qak8scapicl2-talosconfig -o jsonpath='{.data.talosconfig}' | base64 -d > \"$tmpt\"; rtk talosctl --talosconfig \"$tmpt\" --nodes 192.168.160.17,192.168.160.19,192.168.160.24 --endpoints 192.168.160.17,192.168.160.19,192.168.160.24 etcd members; rm -f \"$tmpt\""], decision="allow")
 prefix_rule(pattern=["rg", "talosctl --talosconfig /var/folders|talosctl --talosconfig /tmp|qak8scapicl2-talosconfig|192\\.168\\.160\\.17,192\\.168\\.160\\.19,192\\.168\\.160\\.24"], decision="allow")
 prefix_rule(pattern=["bash", "scripts/cluster-generate.sh"], decision="allow")
+prefix_rule(pattern=["bash", "scripts/cluster-helmcharts.sh"], decision="allow")
