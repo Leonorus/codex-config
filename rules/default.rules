@@ -320,3 +320,6 @@ prefix_rule(pattern=["rg", "-n", "name:|deletionTimestamp:|finalizers:|ownerRefe
 prefix_rule(pattern=["rg", "-n", "paused|last-applied|generation|resourceVersion"], decision="allow")
 prefix_rule(pattern=["rg", "-i", "ipaddress|ipam"], decision="allow")
 prefix_rule(pattern=["rg", "paused"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "curl -sS --connect-timeout 10 --header \"PRIVATE-TOKEN: $GITLAB_PERSONAL_ACCESS_TOKEN\" 'https://gitlab.tl-lan.ru/api/v4/projects/infrastructure%2Fiac%2Fk8s%2Fcapi%2Fcapi/jobs/476676'"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "curl -sS --connect-timeout 10 --header \"PRIVATE-TOKEN: $GITLAB_PERSONAL_ACCESS_TOKEN\" 'https://gitlab.tl-lan.ru/api/v4/projects/infrastructure%2Fiac%2Fk8s%2Fcapi%2Fcapi/jobs/476676/trace' | tail -n 80"], decision="allow")
+prefix_rule(pattern=["rg", "-n", "name:|providerID:|addresses:|nodeRef:|phase:|conditions:|Ready|Available|BootstrapReady|InfrastructureReady|failure|message:"], decision="allow")
