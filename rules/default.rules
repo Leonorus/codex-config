@@ -335,3 +335,4 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "HERMES_WEEKLY_NOTE_PROMOTION_FORCE=1 HE
 prefix_rule(pattern=["rg", "-n", "TrustedRootsConfig|harbor\\.travelline\\.lan|nuget\\.travelline\\.lan|registries:"], decision="allow")
 prefix_rule(pattern=["sed", "-n", "49,66p"], decision="allow")
 prefix_rule(pattern=["sed", "-n", "96,114p"], decision="allow")
+prefix_rule(pattern=["rm", "/private/tmp/render-one.yaml", "/private/tmp/render-two.yaml"], decision="allow")
