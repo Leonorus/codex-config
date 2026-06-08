@@ -115,6 +115,7 @@ For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_work
 
 - For Ops/Infra, Debug, architecture choices, and reusable research, consult `codex-knowledge` before proposing an approach.
 - After implementation, update affected project docs and `AGENTS.md` instructions when the change alters workflow, commands, architecture, or conventions.
+- For Debug and Heavy Ops with meaningful operational findings, check the repo `AGENTS.md` during the finisher. If repo guidance is stale or missing because the task changed commands, architecture, safety rules, or conventions, rewrite it directly in the task session with normal diff review and verification. Weekly knowledge review only suggests `AGENTS.md` or workflow guidance changes; it does not perform these edits.
 - For workflow note reads, writes, or updates, use Obsidian MCP tools as the first note surface; avoid shell commands, raw filesystem access, redirection, heredocs, or Python scripts for vault notes unless Obsidian MCP is unavailable, then state the fallback.
 - Heavy Ops and Debug with a shipped fix or concrete findings should write a raw Obsidian note unless duplicate or trivial.
 - Other non-trivia buckets should ask whether to take a note, with a one-line summary and target path.

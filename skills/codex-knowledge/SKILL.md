@@ -19,6 +19,43 @@ Vault root: `~/Obsidian/Work/`.
 
 `Knowledge/` and `Organization/` each maintain `index.md` and `log.md`.
 
+## Knowledge Pipeline
+
+Treat each layer as a different durability and action surface:
+
+- Raw project notes are evidence. They capture chronology, observations, plans, and findings, but they are not automatically reusable guidance.
+- Project registers track unresolved or repeated issues, decisions, and risks that should survive across task sessions.
+- `Organization/` stores org-specific synthesis: concrete service graphs, internal conventions, runbooks, hostnames, ticketed context, and private operational details.
+- `Knowledge/` stores abstract reusable patterns that plausibly apply across 5+ employers.
+- `AGENTS.md` stores execution guardrails only: commands, safety rules, conventions, and workflow constraints that should affect future agent behavior.
+
+Weekly knowledge review may append safe `Knowledge/`, `Organization/`, and register updates, but it must not edit any `AGENTS.md` or user-wide workflow guidance. Weekly review only suggests those guardrail changes. Repo `AGENTS.md` analysis and rewrite belongs to the task session finisher when Debug or Heavy Ops work changed commands, architecture, safety rules, or conventions.
+
+## Project Registers
+
+Use registers when a finding is durable but not broad enough for synthesis:
+
+- `Projects/<repo>/registers/problem-register.md` for unresolved or repeated problems.
+- `Projects/<repo>/registers/decision-register.md` for durable repo-local decisions.
+- `Projects/<repo>/registers/risk-register.md` for risks, mitigations, and review points.
+
+Register entries are append-only and use stable identifiers:
+
+```md
+## PROB-YYYY-NNN short title
+
+Status: Active | Mitigated | Fixed | Accepted | Deferred
+Sources:
+- [[Projects/<repo>/<note>]]
+Current workaround:
+Desired fix:
+Verification:
+Next action:
+Last reviewed: YYYY-MM-DD
+```
+
+Decision entries use `DEC-YYYY-NNN`; risk entries use `RISK-YYYY-NNN`.
+
 ## Search Before Acting
 
 For Ops/Infra, Debug, architecture choices, and reusable research:
@@ -39,6 +76,17 @@ For non-trivia tasks:
 - After creating or updating a raw project note, run targeted discovery across `Projects/<repo>/`, `Knowledge/`, and `Organization/` to decide whether the new finding should be promoted, linked, or left raw.
 - Promote to `Knowledge/` only when there is a genuinely reusable pattern that plausibly applies at 5+ different employers; update the Knowledge page, `Knowledge/index.md`, and `Knowledge/log.md` in the same pass.
 - Put organization-specific material in `Organization/` and update `Organization/index.md`/`log.md` when making synthesis-layer changes there.
+
+## End-Of-Task Classification
+
+For Heavy Ops and Debug finishers, classify any durable outcome before ending the task:
+
+- raw note captured when the concrete finding/fix is non-trivial and not duplicate;
+- register update for unresolved/repeated problems, durable repo-local decisions, or risks;
+- `Knowledge/` or `Organization/` promotion when the evidence is mature enough for synthesis;
+- `AGENTS.md` update when this session changed commands, architecture, safety rules, or conventions and the current repo guidance is stale or missing;
+- `AGENTS.md` suggestion when the guardrail should be reviewed by a human or applies outside the current repo;
+- no durable update when the work was trivial, duplicate, or too stale/speculative.
 
 ## Promotion Rules
 

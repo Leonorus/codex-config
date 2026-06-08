@@ -329,3 +329,4 @@ prefix_rule(pattern=["rg", "talosctl --talosconfig /var/folders|talosctl --talos
 prefix_rule(pattern=["bash", "scripts/cluster-generate.sh"], decision="allow")
 prefix_rule(pattern=["bash", "scripts/cluster-helmcharts.sh"], decision="allow")
 prefix_rule(pattern=["yq", "-r", ".spec.valuesTemplate", "mgmt-clusters/qacapi1/clusters/qak8scapicl1/helmcharts/coredns.yaml"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "values=$(yq -r '.spec.valuesTemplate' mgmt-clusters/qacapi1/clusters/qak8scapicl1/helmcharts/coredns.yaml); jq -n --arg values \"$values\" '{spec:{values:$values}}' | rtk kubectl --kubeconfig mgmt-clusters/qacapi1/.kubeconfig -n default patch helmreleaseproxy coredns-qak8scapicl1-slmhq --type merge --patch-file /dev/stdin"], decision="allow")
