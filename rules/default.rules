@@ -328,3 +328,4 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "tmpt=$(mktemp); rtk kubectl --request-t
 prefix_rule(pattern=["rg", "talosctl --talosconfig /var/folders|talosctl --talosconfig /tmp|qak8scapicl2-talosconfig|192\\.168\\.160\\.17,192\\.168\\.160\\.19,192\\.168\\.160\\.24"], decision="allow")
 prefix_rule(pattern=["bash", "scripts/cluster-generate.sh"], decision="allow")
 prefix_rule(pattern=["bash", "scripts/cluster-helmcharts.sh"], decision="allow")
+prefix_rule(pattern=["yq", "-r", ".spec.valuesTemplate", "mgmt-clusters/qacapi1/clusters/qak8scapicl1/helmcharts/coredns.yaml"], decision="allow")
