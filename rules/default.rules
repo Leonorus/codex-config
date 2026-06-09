@@ -344,3 +344,4 @@ prefix_rule(pattern=["terraform", "-chdir=terraform/environments/qa/units/auth-m
 prefix_rule(pattern=["terraform", "-chdir=terraform/environments/qa/units/kube-auth-roles"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --request-timeout=10s --kubeconfig mgmt-clusters/qacapi1/.kubeconfig -n default get secret qak8scapicl2-kubeconfig -o jsonpath='{.data.value}' | base64 -d > mgmt-clusters/qacapi1/clusters/qak8scapicl2/.kubeconfig"], decision="allow")
 prefix_rule(pattern=["rtk", "proxy", "bash"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --request-timeout=10s --kubeconfig mgmt-clusters/qacapi1/clusters/qak8scapicl2/.kubeconfig -n addons create token vault --duration=30m > /private/tmp/qak8scapicl2-vswh-vault-sa.jwt"], decision="allow")
