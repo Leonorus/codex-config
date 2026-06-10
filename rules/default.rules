@@ -350,3 +350,5 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --request-timeout=10s --kub
 prefix_rule(pattern=["/bin/zsh", "-lc", "sops set terraform/environments/qa/secrets/kube-auth-method.sops.yaml '[\"token_reviewer_jwt_qak8scapicl2\"]' \"$(cat /private/tmp/qak8scapicl2-vswh-vault-sa-8760h.jwt)\""], decision="allow")
 prefix_rule(pattern=["jq", "-r", ".items[] | select((.subjects // [])[]? | .kind==\"ServiceAccount\" and .name==\"vault\" and .namespace==\"addons\") | [.metadata.name, .roleRef.kind, .roleRef.name] | @tsv"], decision="allow")
 prefix_rule(pattern=["rtk", "proxy"], decision="allow")
+prefix_rule(pattern=["rg", "k8s|sg|qa|msk|spb|asia|as"], decision="allow")
+prefix_rule(pattern=["rg", "-i", "log|deckhouse"], decision="allow")
