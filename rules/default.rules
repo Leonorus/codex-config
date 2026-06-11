@@ -356,3 +356,6 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "for env in ru asia; do for unit in poli
 prefix_rule(pattern=["git", "clean", "-fdX"], decision="allow")
 prefix_rule(pattern=["rm", "-r"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "for root in terraform/environments/ru/units/* terraform/environments/asia/units/*; do echo \"== $root\"; terraform -chdir=\"$root\" init -backend=false -input=false >/tmp/vault-terraform-init.log && terraform -chdir=\"$root\" validate; done"], decision="allow")
+prefix_rule(pattern=["rg", "qak8scapibug2|192\\.168\\.160\\.(33|34|35|36|37|38|39|40|41|42|43|44|45|46|47)|172\\.16\\.160\\.(33|34|35|36|37|38|39|40|41|42|43|44|45|46|47)|192\\.168\\.164\\.(33|34|35|36|37|38|39|40|41|42|43|44|45|46|47)"], decision="allow")
+prefix_rule(pattern=["rtk", "bash"], decision="allow")
+prefix_rule(pattern=["env", "PATH=/private/tmp/capi-no-vault-tools:/usr/bin:/bin"], decision="allow")
