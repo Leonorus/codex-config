@@ -140,7 +140,6 @@ prefix_rule(pattern=[".venv/bin/python", "-m", "pip", "install"], decision="allo
 prefix_rule(pattern=["engram", "setup", "codex"], decision="allow")
 prefix_rule(pattern=["rtk", "init", "--codex"], decision="allow")
 prefix_rule(pattern=["rtk", "python3"], decision="allow")
-prefix_rule(pattern=["/bin/zsh", "-lc", "/bin/zsh -lc 'source \"$HOME/.zshrc\" >/dev/null 2>&1; exec docker run --rm -i -e OBSIDIAN_HOST=host.docker.internal -e OBSIDIAN_API_KEY mcp/obsidian' </dev/null"], decision="allow")
 prefix_rule(pattern=["git", "tag", "-f"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "PATH=/tmp/capi-bin:/usr/bin:/bin:/sbin bash scripts/cluster-generate.sh qacapi1 qak8scapicl1"], decision="allow")
 prefix_rule(pattern=["/bin/zsh", "-lc", "PATH=/tmp/capi-bin:/usr/bin:/bin:/sbin bash scripts/cluster-diff.sh qacapi1 qak8scapicl1"], decision="allow")

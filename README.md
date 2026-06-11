@@ -12,7 +12,7 @@ This repo ports the reusable parts of `Leonorus/claude-workflow` to Codex:
 
 - `skills/codex-workflow`: proportional task taxonomy, engineering workflow, and evidence-gated reasoning guards.
 - `skills/codex-knowledge`: Obsidian knowledge-library search, notes, and promotion rules.
-- `config.toml`: MCP servers, including Obsidian and Engram.
+- `config.toml`: MCP servers, including Docker Gateway, GitLab, and Workflow. Obsidian tools are exposed through Docker Gateway as `mcp__docker_gateway.obsidian_*`.
 - `engram-instructions.md`: persistent-memory protocol loaded by Codex.
 - `hooks.json` and `hooks/`: Codex-native lifecycle hooks ported from Claude where supported.
 - `RTK.md`: RTK usage instructions for Codex shell commands.
