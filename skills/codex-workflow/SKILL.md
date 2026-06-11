@@ -9,7 +9,7 @@ This is the Codex port of the Claude `classify-task` workflow. It is the source 
 
 ## Start-of-task Rule
 
-Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow/Obsidian MCP before Obsidian claims and for workflow note reads/writes. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
+Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow MCP and Obsidian via mcp__docker_gateway.obsidian_* before Obsidian claims and for workflow note reads/writes. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
 
 In Codex runtimes that expose Workflow MCP, treat that line as the first-move rule before planning, proposing an approach, or editing files. Pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured checklist rather than unquestionable authority; override it when user correction or gathered evidence shows the bucket is wrong.
 
@@ -102,7 +102,7 @@ Persist only durable outcomes: compact project notes, skills, or memory entries 
 
 ## Workflow MCP and Obsidian Context
 
-For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_workflow_start_task` candidate notes or `mcp_workflow_discover_context` when Workflow MCP is available, then read the directly relevant Obsidian notes via Obsidian MCP before proposing an approach. Without Workflow MCP, consult `codex-knowledge` manually. Candidate paths are routing metadata, not citations; cite only notes actually read.
+For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_workflow_start_task` candidate notes or `mcp_workflow_discover_context` when Workflow MCP is available, then read the directly relevant Obsidian notes via `mcp__docker_gateway.obsidian_*` before proposing an approach. Without Workflow MCP, consult `codex-knowledge` manually. Candidate paths are routing metadata, not citations; cite only notes actually read.
 
 ## Always-On Principles
 
