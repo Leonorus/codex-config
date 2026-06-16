@@ -14,8 +14,6 @@ sync_codex() {
     README.md \
     RTK.md \
     config.toml \
-    engram-compact-prompt.md \
-    engram-instructions.md \
     hooks.json \
     hooks \
     requirements-dev.txt \

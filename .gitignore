@@ -5,8 +5,6 @@
 # Repository metadata/docs.
 !.gitignore
 !README.md
-!engram-compact-prompt.md
-!engram-instructions.md
 !AGENTS.md
 !RTK.md
 !hooks.json
