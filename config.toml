@@ -3,8 +3,11 @@ model_reasoning_effort = "xhigh"
 
 service_tier = "fast"
 
+notify = ["/Users/filipp.vysokov/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
 [features]
 hooks = true
+js_repl = false
 
 [shell_environment_policy]
 inherit = "all"
@@ -101,6 +104,32 @@ approval_mode = "approve"
 [mcp_servers.workflow.tools.finish_checklist]
 approval_mode = "approve"
 
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/filipp.vysokov/.codex"
+CODEX_HOME = "/Users/filipp.vysokov/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "2b020a2faded171bf620563ce51864b7c3ff320f1834f0044b73fcbeabb29a76,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.30751"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
 [tui]
 status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
@@ -119,3 +148,37 @@ trusted_hash = "sha256:45e74039c3bd2114552371108fd1dd3b1af20ca3618cc75d35821c406
 [hooks.state."/Users/filipp.vysokov/.codex/hooks.json:user_prompt_submit:0:0"]
 trusted_hash = "sha256:18dad40cebcc86b484731bee4287210f91084d99a004c3fc8008a0a282f147bc"
 
+[desktop]
+followUpQueueMode = "queue"
+dock-icon-preference = "codex-system"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-07-09T19:45:11Z"
+source_type = "local"
+source = "/Users/filipp.vysokov/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-09T19:46:05Z"
+source_type = "local"
+source = "/Users/filipp.vysokov/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
