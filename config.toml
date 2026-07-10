@@ -78,6 +78,9 @@ trust_level = "trusted"
 [projects."/Users/filipp.vysokov/Projects/yc-terraform-infra"]
 trust_level = "trusted"
 
+[projects."/Users/filipp.vysokov/Projects/agentic-dnd"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 fast_default_opt_out = true
@@ -135,7 +138,7 @@ status_line = ["current-dir", "git-branch", "context-usage", "five-hour-limit"]
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-"gpt-5.6-sol" = 1
+"gpt-5.6-sol" = 2
 
 [hooks.state]
 
@@ -159,7 +162,7 @@ source_type = "local"
 source = "/Users/filipp.vysokov/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-09T19:46:05Z"
+last_updated = "2026-07-10T08:08:42Z"
 source_type = "local"
 source = "/Users/filipp.vysokov/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 

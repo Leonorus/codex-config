@@ -395,3 +395,4 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --kubeconfig mgmt-clusters/
 prefix_rule(pattern=["/bin/zsh", "-lc", "rtk kubectl --kubeconfig mgmt-clusters/qacapi1/.kubeconfig -n default get secret qak8scapidbg1-talosconfig -o jsonpath='{.data.talosconfig}' | base64 -d > mgmt-clusters/qacapi1/clusters/qak8scapidbg1/.talosconfig"], decision="allow")
 prefix_rule(pattern=["grep", "-E", "qak8scapidbg1|route already|unable to render network-config|cloud-init|user-data|error waiting for agent"], decision="allow")
 prefix_rule(pattern=["env", "KUBEBUILDER_ASSETS=/Users/filipp.vysokov/Projects/cluster-api-provider-proxmox/bin/k8s/1.33.0-darwin-arm64", "go", "test", "./..."], decision="allow")
+prefix_rule(pattern=["rtk", "node", "/Users/filipp.vysokov/.codex/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs"], decision="allow")
