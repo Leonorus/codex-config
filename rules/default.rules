@@ -410,3 +410,5 @@ prefix_rule(pattern=["glab", "api", "--hostname", "gitlab.tl-lan.ru", "runners/1
 prefix_rule(pattern=["bash", "/private/tmp/gitlab-upgrade-smoke-1787-20260727.sh"], decision="allow")
 prefix_rule(pattern=["bash", "/private/tmp/gitlab-upgrade-smoke-1787-cleanup.sh"], decision="allow")
 prefix_rule(pattern=["bash", "/private/tmp/gitlab-upgrade-smoke-1787-registry-retry.sh"], decision="allow")
+prefix_rule(pattern=["rtk", "glab", "api"], decision="allow")
+prefix_rule(pattern=["jq", "{id,status,name,stage,created_at,started_at,finished_at,duration,runner:{id:.runner.id,description:.runner.description},pipeline:{id:.pipeline.id,status:.pipeline.status}}"], decision="allow")
