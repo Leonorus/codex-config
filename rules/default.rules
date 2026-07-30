@@ -429,3 +429,5 @@ prefix_rule(pattern=["jq", "[.[] | {id,status,tags_count,created_at}]"], decisio
 prefix_rule(pattern=["rtk", "go", "test"], decision="allow")
 prefix_rule(pattern=["bash", "/private/tmp/gitlab-upgrade-smoke-18811.sh"], decision="allow")
 prefix_rule(pattern=["bash", "/private/tmp/gitlab-upgrade-smoke-18811-registry.sh"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "rtk ssh -p 2222 filipp.vysokov@q1v1-gitlab.travelline.lan 'sudo docker exec -i gitlab-ee gitlab-rails runner -' < /private/tmp/gitlab-parallelism-final.rb"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "rtk ssh -p 2222 filipp.vysokov@q1v1-gitlab.travelline.lan 'sudo docker exec -i gitlab-ee gitlab-psql -d gitlabhq_production' < /private/tmp/gitlab-parallelism-final.sql"], decision="allow")
