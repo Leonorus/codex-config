@@ -12,6 +12,11 @@ js_repl = false
 [shell_environment_policy]
 inherit = "all"
 
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "14e425736668bf21b5b39f2cc022ee8684728617fb5c49f35533c2e349f47193,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/filipp.vysokov/.codex"
+
 [projects."/Users/filipp.vysokov"]
 trust_level = "trusted"
 
@@ -118,13 +123,13 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_n
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/filipp.vysokov/.codex"
 CODEX_HOME = "/Users/filipp.vysokov/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "2b020a2faded171bf620563ce51864b7c3ff320f1834f0044b73fcbeabb29a76,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "14e425736668bf21b5b39f2cc022ee8684728617fb5c49f35533c2e349f47193,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.707.30751"
+BROWSER_USE_CODEX_APP_VERSION = "26.721.81911"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.computer-use]
@@ -160,7 +165,7 @@ followUpQueueMode = "queue"
 dock-icon-preference = "codex-system"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-20T22:25:04Z"
+last_updated = "2026-07-30T07:55:02Z"
 source_type = "local"
 source = "/Users/filipp.vysokov/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
