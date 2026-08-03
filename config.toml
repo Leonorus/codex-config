@@ -165,12 +165,12 @@ followUpQueueMode = "queue"
 dock-icon-preference = "codex-system"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-30T07:55:02Z"
+last_updated = "2026-08-02T14:01:08Z"
 source_type = "local"
 source = "/Users/filipp.vysokov/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-31T02:08:22Z"
+last_updated = "2026-08-03T00:19:02Z"
 source_type = "local"
 source = "/Users/filipp.vysokov/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
