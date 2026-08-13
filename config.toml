@@ -170,7 +170,7 @@ source_type = "local"
 source = "/Users/filipp.vysokov/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-08-06T03:08:16Z"
+last_updated = "2026-08-12T20:08:45Z"
 source_type = "local"
 source = "/Users/filipp.vysokov/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
