@@ -460,3 +460,6 @@ prefix_rule(pattern=["rtk", "zsh", "-c", "/opt/homebrew/opt/openssl@3/bin/openss
 prefix_rule(pattern=["jq", "keys"], decision="allow")
 prefix_rule(pattern=["jq", ".spec | keys"], decision="allow")
 prefix_rule(pattern=["jq", "-r", ".spec"], decision="allow")
+prefix_rule(pattern=["rg", "Installing (bpg/proxmox|hashicorp/vault|siderolabs/talos)|Using previously-installed (bpg/proxmox|hashicorp/vault|siderolabs/talos)|Installed (bpg/proxmox|hashicorp/vault|siderolabs/talos)"], decision="allow")
+prefix_rule(pattern=["rtk", "env"], decision="allow")
+prefix_rule(pattern=["rg", "Installing (bpg/proxmox|hashicorp/vault|siderolabs/talos)|Installed (bpg/proxmox|hashicorp/vault|siderolabs/talos)"], decision="allow")
