@@ -499,3 +499,5 @@ prefix_rule(pattern=["glab", "api", "projects/435/merge_requests/80/pipelines"],
 prefix_rule(pattern=["glab", "api"], decision="allow")
 prefix_rule(pattern=["wc", "-c"], decision="allow")
 prefix_rule(pattern=["rg", "-n", "Cluster .*does not exist|Checking server-side diff|openapi|Unexpected error|error validating|ERROR|No resources found"], decision="allow")
+prefix_rule(pattern=["tail", "-80"], decision="allow")
+prefix_rule(pattern=["rg", "-i", "openapi|timeout|timed out|canceled|error|panic|etcd"], decision="allow")
