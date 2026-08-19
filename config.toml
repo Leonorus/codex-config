@@ -86,6 +86,9 @@ trust_level = "trusted"
 [projects."/Users/filipp.vysokov/Projects/agentic-dnd"]
 trust_level = "trusted"
 
+[projects."/Users/filipp.vysokov/Projects/yc-k8s-infra"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 fast_default_opt_out = true
