@@ -644,3 +644,7 @@ prefix_rule(pattern=["rg", "-n", "-C", "8", "Objects have changed outside|OneCIn
 prefix_rule(pattern=["jq", "[.[] | {id,status,source,ref,created_at,web_url}]"], decision="allow")
 prefix_rule(pattern=["jq", "[.[] | {id,name,status,downstream_pipeline:(.downstream_pipeline | if . == null then null else {id,status,web_url} end)}]"], decision="allow")
 prefix_rule(pattern=["jq", "[.[] | select(.name | test(\"asia:(plan|apply):kv-secret-engines\")) | {id,name,status,allow_failure,web_url}]"], decision="allow")
+prefix_rule(pattern=["jq", "{iid,title,author:.author.name,author_username:.author.username,merged_by:.merged_by.name,merged_by_username:.merged_by.username,merged_at,merge_commit_sha,source_branch,target_branch,web_url}"], decision="allow")
+prefix_rule(pattern=["jq", "{id,short_id,title,author_name,author_email,authored_date,committer_name,committer_email,committed_date,parent_ids,web_url}"], decision="allow")
+prefix_rule(pattern=["rg", "-n", "-C", "8", "Objects have changed outside|OneCIntegration|Plan:|No changes"], decision="allow")
+prefix_rule(pattern=["jq", "{id,name,status,created_at,started_at,finished_at,ref,pipeline_id:.pipeline.id,commit:{id:.commit.id,title:.commit.title,author_name:.commit.author_name},triggered_by:{name:.user.name,username:.user.username},web_url}"], decision="allow")
