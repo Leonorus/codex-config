@@ -614,3 +614,4 @@ prefix_rule(pattern=["jq", "[.items[] | {name:.metadata.name,ready:(.status.cond
 prefix_rule(pattern=["jq", "{id,status,duration,finished_at}"], decision="allow")
 prefix_rule(pattern=["rg", "Waiting for HelmChartProxy|condition met|Helm release|Job succeeded|ERROR|error"], decision="allow")
 prefix_rule(pattern=["rg", "No manifests|Applying|configured|created|unchanged|Job succeeded|ERROR|error"], decision="allow")
+prefix_rule(pattern=["rg", "Applying CA bundle|Configuring HTTP|Configuring Helm|Applying Argo CD bootstrap|handoff complete|ERROR|Error|denied|failed"], decision="allow")
