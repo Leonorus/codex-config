@@ -632,3 +632,8 @@ prefix_rule(pattern=["/bin/zsh", "-lc", "glab mr create --source-branch DEVOPS-2
 prefix_rule(pattern=["jq", "{iid,title,state,source_branch,target_branch,sha:.sha,detailed_merge_status,web_url,head_pipeline:(.head_pipeline | if . == null then null else {id,status,web_url} end)}"], decision="allow")
 prefix_rule(pattern=["jq", "{id,status,source,ref,sha,web_url,created_at,updated_at}"], decision="allow")
 prefix_rule(pattern=["jq", "{id,status,updated_at,web_url}"], decision="allow")
+prefix_rule(pattern=["jq", "-r", ".changes[] | select(.diff | test(\"dex|vault-env-from-path|vault-path\"; \"i\")) | \"FILE: \\(.new_path)\\n\\(.diff)\""], decision="allow")
+prefix_rule(pattern=["jq", "-r", ".changes[].new_path"], decision="allow")
+prefix_rule(pattern=["jq", "-r", ".changes[] | select(.new_path == \"charts/kam-platform/values/envs/sg/values.yaml\") | .diff"], decision="allow")
+prefix_rule(pattern=["jq", "{source_branch,sha,target_branch}"], decision="allow")
+prefix_rule(pattern=["rg", "-n", "-C", "5", "dex:|vault-path|vault-role|vault-env-from-path"], decision="allow")
