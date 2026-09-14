@@ -692,3 +692,5 @@ prefix_rule(pattern=["cp", "/private/tmp/kam-kibana-event-visibility-final-20260
 prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-20260914.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/registers/problem-register.md"], decision="allow")
 prefix_rule(pattern=["cp", "/private/tmp/kam-kibana-event-visibility-rollout-20260914.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-kibana-event-visibility.md"], decision="allow")
 prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-rollout-20260914.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/registers/problem-register.md"], decision="allow")
+prefix_rule(pattern=["jq", "-r", ".[].path"], decision="allow")
+prefix_rule(pattern=["rg", "-n", "-i", "-C", "3", "logstash|elastic|stash"], decision="allow")
