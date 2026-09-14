@@ -694,3 +694,6 @@ prefix_rule(pattern=["cp", "/private/tmp/kam-kibana-event-visibility-rollout-202
 prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-rollout-20260914.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/registers/problem-register.md"], decision="allow")
 prefix_rule(pattern=["jq", "-r", ".[].path"], decision="allow")
 prefix_rule(pattern=["rg", "-n", "-i", "-C", "3", "logstash|elastic|stash"], decision="allow")
+prefix_rule(pattern=["rtk", "curl"], decision="allow")
+prefix_rule(pattern=["jq", "-c", "try {keys: keys, reason_type: (.reason|type), event_type: (.type|type), source_type: (.source|type), involved_object_type: (.involvedObject|type)} catch empty"], decision="allow")
+prefix_rule(pattern=["jq", "-r", "select(.type == \"Warning\") | .involvedObject.deleted | type"], decision="allow")
