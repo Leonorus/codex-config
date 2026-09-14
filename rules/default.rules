@@ -681,3 +681,4 @@ prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-events.md", "/User
 prefix_rule(pattern=["cp", "/private/tmp/kam-2026-09-14-kibana-event-visibility-corrected.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-kibana-event-visibility.md"], decision="allow")
 prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-corrected.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/registers/problem-register.md"], decision="allow")
 prefix_rule(pattern=["cp", "/private/tmp/kam-rollout-note-corrected.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-qa-kubernetes-events-exporter.md"], decision="allow")
+prefix_rule(pattern=["cp", "/private/tmp/kam-kibana-event-visibility-20260914.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-kibana-event-visibility.md"], decision="allow")
