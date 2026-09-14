@@ -673,3 +673,5 @@ prefix_rule(pattern=["jq", "-r", ".[].index | select(test(\"audit|k8s\";\"i\"))"
 prefix_rule(pattern=["head", "-50"], decision="allow")
 prefix_rule(pattern=["jq", "{name:.metadata.name,type:.spec.type,extraLabels:.spec.extraLabels,endpoint:.spec.logstash.endpoint}"], decision="allow")
 prefix_rule(pattern=["jq", "{name:.metadata.name,containers:[.spec.template.spec.containers[]|{name,image,args,command}],serviceAccountName:.spec.template.spec.serviceAccountName}"], decision="allow")
+prefix_rule(pattern=["jq", "{schemaVersion,mediaType,platforms:[.manifests[]?.platform]}"], decision="allow")
+prefix_rule(pattern=["rg", "-n", "-C", "2", "omit|Lookup|leaderElection|maxEventAge"], decision="allow")
