@@ -676,3 +676,5 @@ prefix_rule(pattern=["jq", "{name:.metadata.name,containers:[.spec.template.spec
 prefix_rule(pattern=["jq", "{schemaVersion,mediaType,platforms:[.manifests[]?.platform]}"], decision="allow")
 prefix_rule(pattern=["rg", "-n", "-C", "2", "omit|Lookup|leaderElection|maxEventAge"], decision="allow")
 prefix_rule(pattern=["cp", "/private/tmp/kam-2026-09-14-qa-kubernetes-events-exporter.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-qa-kubernetes-events-exporter.md"], decision="allow")
+prefix_rule(pattern=["cp", "/private/tmp/2026-09-14-kibana-event-visibility.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/2026-09-14-kibana-event-visibility.md"], decision="allow")
+prefix_rule(pattern=["cp", "/private/tmp/kam-problem-register-events.md", "/Users/filipp.vysokov/Obsidian/Work/Projects/kam/registers/problem-register.md"], decision="allow")
