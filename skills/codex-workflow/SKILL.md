@@ -11,7 +11,7 @@ This is the Codex port of the Claude `classify-task` workflow. It is the source 
 
 Workflow: for substantial software/ops/debug/research/repo-maintenance, call mcp_workflow_start_task(prompt,cwd,repo) first; state/override bucket, load returned skills, follow contract/context/delegation/finish checklist. Use Workflow MCP and Obsidian via mcp__docker_gateway.obsidian_* before Obsidian claims and for workflow note reads/writes. Finish non-trivia with mcp_workflow_finish_checklist. Fallback: codex-workflow.
 
-In Codex runtimes that expose Workflow MCP, treat that line as the first-move rule before planning, proposing an approach, or editing files. Pass the prompt plus `cwd`, `repo`, and `session_id` when known. Treat the returned packet as a structured checklist rather than unquestionable authority; override it when user correction or gathered evidence shows the bucket is wrong.
+In Codex runtimes that expose Workflow MCP, treat that line as the first-move rule before planning, proposing an approach, or editing files. Pass the prompt plus `cwd` and `repo` when known; pass the returned `task_id` to `finish_checklist`. Use only arguments exposed by the current tool schema. Treat the returned packet as a structured checklist rather than unquestionable authority; override it when user correction or gathered evidence shows the bucket is wrong.
 
 This skill remains the canonical human-readable policy. If Workflow MCP is unavailable, fails, stale, not exposed in Codex, or produces an obviously wrong classification, use this skill directly and state one visible sentence:
 
@@ -128,6 +128,7 @@ For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_work
 ## Codex-Specific Adaptation
 
 - Do not copy Claude custom-agent routing literally. Use Codex subagents/parallel agents when the runtime exposes them and they materially improve correctness or latency; otherwise keep orchestration local and use available tools for safe parallel read/search work.
+- Workflow MCP delegation hints may use Hermes `delegate_task` and `toolsets` terminology. Map the task to the available Codex collaboration tool and state its read-only scope in the child instructions; do not invent unsupported tool arguments or claim that tool access is restricted when the runtime does not enforce it. Use Obsidian MCP for delegated vault reads when available, as in the parent workflow.
 - Do not use or invent Beads, `bd`, `template-bridge`, or mandatory task-tracker commands. Those tools are not currently available.
 - Do not use git worktrees unless the user explicitly asks. Work directly in the current checkout.
 - Use project-local `AGENTS.md` as the durable instruction surface. If a repo has `CLAUDE.md`, migrate relevant project instructions into `AGENTS.md` when safe.
