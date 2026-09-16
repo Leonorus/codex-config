@@ -697,3 +697,6 @@ prefix_rule(pattern=["rg", "-n", "-i", "-C", "3", "logstash|elastic|stash"], dec
 prefix_rule(pattern=["rtk", "curl"], decision="allow")
 prefix_rule(pattern=["jq", "-c", "try {keys: keys, reason_type: (.reason|type), event_type: (.type|type), source_type: (.source|type), involved_object_type: (.involvedObject|type)} catch empty"], decision="allow")
 prefix_rule(pattern=["jq", "-r", "select(.type == \"Warning\") | .involvedObject.deleted | type"], decision="allow")
+prefix_rule(pattern=["rtk", "gofmt", "-w", "pkg/kubernetes/ipam/ipam.go", "pkg/kubernetes/ipam/ipam_test.go", "internal/service/vmservice/ip.go", "internal/service/vmservice/ip_test.go", "internal/service/vmservice/recovery_test.go"], decision="allow")
+prefix_rule(pattern=["rtk", "gofmt", "-w", "pkg/kubernetes/ipam/ipam.go", "pkg/kubernetes/ipam/ipam_test.go", "internal/service/vmservice/helpers_test.go"], decision="allow")
+prefix_rule(pattern=["rtk", "gofmt", "-w", "pkg/kubernetes/ipam/ipam.go", "pkg/kubernetes/ipam/ipam_test.go", "internal/service/vmservice/ip.go", "internal/service/vmservice/recovery_test.go", "internal/service/vmservice/vm.go", "internal/service/vmservice/vm_test.go"], decision="allow")
