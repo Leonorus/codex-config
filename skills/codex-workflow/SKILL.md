@@ -33,7 +33,7 @@ For non-trivia work, state the bucket in one short sentence and run that flow:
 | Debug | Bug report, failing test, stack trace, unexpected behavior | Reproduce -> hypothesize -> instrument/read -> fix the cause -> verify the exact failure is gone -> note findings if concrete. |
 | Research | "How does X work", compare options, repo exploration, no code change | Read and report. Use Obsidian when this is Ops/Infra, Debug, architecture, or reusable research. |
 | Repo-maintenance | Dependency bumps, CI cleanup, docs cleanup, tests, release metadata, repository hygiene, stale config, or convention maintenance | Inspect current convention -> split independent areas such as CI/deps/docs/tests/release -> use subagents where useful -> edit surgically -> run affected validation -> update docs/notes when conventions change. |
-| Ambiguous | Multiple buckets fit or scope is unclear | Ask a concise clarifying question before edits. |
+| Ambiguous | Multiple buckets fit or scope is unclear | Ask when the answer materially changes scope, correctness, or authorization; otherwise proceed with an explicit low-risk assumption. |
 
 Escalate Light Ops to Heavy Ops if the diff grows beyond roughly 50 lines, spreads across files, touches prod/secrets/network, reveals a deeper design issue, or repeats across multiple repos.
 
@@ -110,6 +110,7 @@ For Ops/Infra, Debug, architecture choices, and reusable research, use `mcp_work
 - Simplicity first: implement only what the current request needs; avoid speculative flags, helpers, abstractions, and "nice to have" extras.
 - Surgical changes: touch only required lines plus direct wiring/tests; report unrelated issues instead of fixing them inline.
 - Goal-driven execution: define "done" as verifiable criteria, run the smallest relevant check first, and only claim success with command evidence.
+- Follow-through: user instructions and existing authorization take precedence over skill guidance. Continue authorized independent work while clarification is pending; request any necessary approval only after preparing a concrete, reviewable result. If a skill blocks progress, link and quote the exact instruction instead of inventing an approval gate.
 
 ## Cross-Cutting Requirements
 
@@ -140,5 +141,6 @@ Before final response:
 
 - Check `git diff`/`git status` for unintended edits when working in a git repo.
 - Run relevant verification: tests, lint, formatter, build, dry-run, syntax check, or smoke check.
+- Once required checks pass, broaden or repeat verification only when new changes, failures, or unresolved concerns justify it. For reversible, low-impact edits, use existing checks instead of adding tests that only duplicate the implementation.
 - If verification could not run, state the exact blocker.
 - For meaningful code/config changes, update affected docs or explain why none were affected.
