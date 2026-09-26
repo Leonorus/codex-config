@@ -92,6 +92,9 @@ trust_level = "trusted"
 [projects."/Users/filipp.vysokov/Projects/gitlab-actions"]
 trust_level = "trusted"
 
+[projects."/Users/filipp.vysokov/Projects/ansible-amnesiaWG"]
+trust_level = "trusted"
+
 [notice]
 hide_rate_limit_model_nudge = true
 fast_default_opt_out = true
